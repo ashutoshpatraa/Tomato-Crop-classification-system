@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Classification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-red-600 bg-opacity-50 flex flex-col items-center justify-center min-h-screen font-roboto">
+    <nav class="glass w-full p-4 fixed top-0">
+        <div class="container mx-auto text-center">
+            <h1 class="text-2xl font-bold text-white">Tomato Classification System</h1>
+        </div>
+    </nav>
+    <div class="glass mt-20 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4 text-white">Upload an Image of a Tomato</h2>
+        <form action="/" method="post" enctype="multipart/form-data" class="space-y-4">
+            <div class="flex items-center space-x-4">
+                <label class="file-input">
+                    Choose File
+                    <input type="file" name="file" accept="image/*">
+                </label>
+                <input type="submit" value="Upload and Classify" class="btn-primary">
+            </div>
+        </form>
+        {% if label %}
+            <div class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                <h3 class="text-lg font-semibold">The predicted class is: {{ label }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
